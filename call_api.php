@@ -1,18 +1,20 @@
 <?php
+
+#local test getData API
+
 try {
 	echo 'test API call';
 
 	require_once 'lib/net.class.php';
 
-	$url  = 'https://billingadmin.cafe24.com/test/ykkim02/test_api.php';
-	$url .= '?id=ykkim02&date=2015';
+	$getDataurl  = 'https://billingadmin.cafe24.com/test/ykkim02/test_get_pay_data.php';
 
-	$sslFlag = Net::getSSLFlag( $url );
+	$sslFlag = Net::getSSLFlag( $getDataurl );
 
-	$getData = Net::getHtml( $url, 'GET', 30, TRUE );
+	$getData = Net::getHtml( $getDataurl, 'GET', 30, TRUE );
+	$getData = unserialize($getData);
 
 	var_dump( $getData );
-
 
 } catch ( Exception $e ) {
 	echo '<pre>' . print_r ( $e, true ) . '</pre>';
