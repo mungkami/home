@@ -13,26 +13,36 @@ try {
 	$passwd = 'yg3035';
 	$options = null;
 
-	$pdo = new PDO($dsn, $username, $passwd, $options);
+	$dbh = new PDO($dsn, $username, $passwd, $options);
+	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 
-	$query  = "INERT INTO test_id( testId, userName, useFlag, managerId, remark, registDate )";
+	$query  = "INSERT INTO test_id( testId, userName, useFlag, managerId, remark, registDate )";
 	$query .= "VALUES( :testId, :userName, :useFlag, :managerId, :remark, NOW() ) ";
 
-	$stmt = $pdo->prepare($query);
-	$stmt->bindValue( ':testId', 'billingtest', PDO::PARAM_STR );
-	$stmt->bindValue( ':userName', 'ygkim', PDO::PARAM_STR );
-	$stmt->bindValue( ':useFlag', TRUE, PDO::PARAM_BOOL );
-	$stmt->bindValue( ':managerId', 'ykkim02', PDO::PARAM_STR );
-	$stmt->bindValue( ':remark', 'insert testId', PDO::PARAM_STR );
+	$stmt = $dbh->prepare($query);
+
+	if( !$stmt ){
+		print_r( $dbh->errorInfo() );
+	}
+
+	$testId = 'billingtest';
+	$userName = 'ygkim';
+	$useFlag = TRUE;
+	$managerId = 'ykkim02';
+	$remark = 'insert test';
+
+
+	$stmt->bindParam( ':testId', $testId, PDO::PARAM_STR );
+	$stmt->bindParam( ':userName', $userName, PDO::PARAM_STR );
+	$stmt->bindParam( ':useFlag', $useFlag, PDO::PARAM_BOOL );
+	$stmt->bindParam( ':managerId', $managerId, PDO::PARAM_STR );
+	$stmt->bindParam( ':remark', $remark, PDO::PARAM_STR );
 
 	$returnCode = $stmt->execute();
 
 	if( $returnCode == false ){
-		$errMg = 'fail to insert';
-		throw new ErrorException( $errMsg );
+		print_r( $dbh->errorInfo() );
 	}
-
-
 
 } catch (Exception $e) {
 
