@@ -100,8 +100,7 @@ try {
 		$devRemark		= $row['devRemark'];
 		$remark			= $row['remark'];
 
-
-		//$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUCKR" );
+		$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUCKR" );
 
 		$result = $stmt->execute();
 
