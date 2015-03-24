@@ -22,6 +22,7 @@ try {
 	$query .= "ORDER BY idx DESC LIMIT 2";
 
 	$stmt = $dbh->prepare($query);
+	$stmt->execute();
 	$list = $stmt->fetchAll();
 
 	var_dump( $list );
