@@ -23,6 +23,7 @@ try {
 
 	$database = new Database($dsn, $username, $passwd);
 	$dbh = $database->getDbh();
+	$dbh->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES euckr");
 
 	$query  = "INSERT INTO pay_data ( payTableKey, payMethod, payAmount, ";
 	$query .= "payStatus, serviceName, productCode, parentId, userId, orderName, orderNo, ";
@@ -99,8 +100,6 @@ try {
 		$managerId		= $row['managerId'];
 		$devRemark		= $row['devRemark'];
 		$remark			= $row['remark'];
-
-		$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUCKR" );
 
 		$result = $stmt->execute();
 
