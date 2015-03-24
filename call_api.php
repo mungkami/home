@@ -72,11 +72,10 @@ try {
 		$payMethod 		= $row['payMethod'];
 		$payAmount		= $row['payAmount'];
 		$payStatus		= $row['payStatus'];
-		echo 'serviceName : '.$serviceName.PHP_EOL;
+		echo 'serviceName : '.$row['serviceName'].PHP_EOL;
 		$serviceName = iconv( 'utf-8', 'euc-kr', $row['serviceName'] );
 		echo 'serviceName : '.$serviceName.PHP_EOL;
 		$serviceName	= $serviceName;
-		exit;
 		$productCode	= $row['productCode'];
 		$parentId		= $row['parentId'];
 		$userId			= $row['userId'];
@@ -104,11 +103,11 @@ try {
 
 		//$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUC-KR" );
 
-		$result = $stmt->execute();
+		/*$result = $stmt->execute();
 
 		if( $result == false ){
 			echo 'Insert Error | payTableKey='.$payTableKey.PHP_EOL;
-		}
+		}*/
 	}
 
 	unset( $getData, $stmt, $dbh );
