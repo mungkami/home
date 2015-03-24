@@ -97,12 +97,19 @@ try {
 		$devRemark		= $row['devRemark'];
 		$remark			= $row['remark'];
 
+		/*
 		$result = $stmt->execute();
 
 		if( $result == false ){
 			echo 'Insert Error | payTableKey='.$payTableKey.PHP_EOL;
 		}
+		*/
 	}
+
+	var_dump( $getData );
+
+	unset( $getData, $stmt, $dbh );
+	exit;
 
 
 } catch ( Exception $e ) {
