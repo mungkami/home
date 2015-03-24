@@ -17,7 +17,7 @@ try {
 	#set Database
 	include_once 'lib/database.class.php';
 
-	$dsn = 'localhost;dbname:payment';
+	$dsn = 'localhost;dbname=payment';
 	$username = 'root';
 	$passwd = 'yg3035';	//test
 
