@@ -97,16 +97,15 @@ try {
 		$devRemark		= $row['devRemark'];
 		$remark			= $row['remark'];
 
-		/*
+
+		$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUC-KR" );
+
 		$result = $stmt->execute();
 
 		if( $result == false ){
 			echo 'Insert Error | payTableKey='.$payTableKey.PHP_EOL;
 		}
-		*/
 	}
-
-	var_dump( $getData );
 
 	unset( $getData, $stmt, $dbh );
 	exit;
