@@ -17,7 +17,7 @@ try {
 
 	//$dbh->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES euckr");
 
-	$query  = "SELECT * ";
+	$query  = "SELECT serviceName ";
 	$query .= "FROM pay_data ";
 	$query .= "ORDER BY idx DESC LIMIT 2";
 
