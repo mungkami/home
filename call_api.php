@@ -25,12 +25,12 @@ try {
 	$dbh = $database->getDbh();
 
 	$query  = "INSERT INTO pay_data ( payTableKey, payMethod, payAmount, ";
-	$query .= "payStatus, serviceName, productCode, parentId, userId, oderName, orderNo, ";
+	$query .= "payStatus, serviceName, productCode, parentId, userId, orderName, orderNo, ";
 	$query .= "pgId, tradeNo, approvalNo, bankName, accountNo, accountName, escrowYN, escrowNo, ";
 	$query .= "mobileNo, regDate, bankCheckIdx, updateDate, testFlag, refundIdx, cancelKey, ";
 	$query .= "managerId, devRemark, remark) VALUES( ";
 	$query .= ":payTableKey, :payMethod, :payAmount, ";
-	$query .= ":payStatus, :serviceName, :productCode, :parentId, :userId, :oderName, :orderNo, ";
+	$query .= ":payStatus, :serviceName, :productCode, :parentId, :userId, :orderName, :orderNo, ";
 	$query .= ":pgId, :tradeNo, :approvalNo, :bankName, :accountNo, :accountName, :escrowYN, :escrowNo, ";
 	$query .= ":mobileNo, :regDate, :bankCheckIdx, :updateDate, :testFlag, :refundIdx, :cancelKey, ";
 	$query .= ":managerId, :devRemark, :remark )";
@@ -44,7 +44,7 @@ try {
 	$stmt->bindParam( ':productCode', $productCode, PDO::PARAM_STR );
 	$stmt->bindParam( ':parentId', $parentId, PDO::PARAM_STR );
 	$stmt->bindParam( ':userId', $userId, PDO::PARAM_STR );
-	$stmt->bindParam( ':oderName', $oderName, PDO::PARAM_STR );
+	$stmt->bindParam( ':orderName', $orderName, PDO::PARAM_STR );
 	$stmt->bindParam( ':orderNo', $orderNo, PDO::PARAM_STR );
 	$stmt->bindParam( ':pgId', $pgId, PDO::PARAM_STR );
 	$stmt->bindParam( ':tradeNo', $tradeNo, PDO::PARAM_STR );
