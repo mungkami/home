@@ -76,7 +76,7 @@ try {
 		$productCode	= $row['productCode'];
 		$parentId		= $row['parentId'];
 		$userId			= $row['userId'];
-		$orderName		= $row['odrerName'];
+		$orderName		= $row['orderName'];
 		$orderNo		= $row['orderNo'];
 		$pgId			= $row['pgId'];
 		$tradeNo		= $row['tradeNo'];
@@ -97,7 +97,7 @@ try {
 		$devRemark		= $row['devRemark'];
 		$remark			= $row['remark'];
 
-		$result = $stmt->excute();
+		$result = $stmt->execute();
 
 		if( $result == false ){
 			echo 'Insert Error | payTableKey='.$payTableKey.PHP_EOL;
