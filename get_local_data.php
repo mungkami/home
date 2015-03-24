@@ -23,7 +23,7 @@ try {
 
 	$stmt = $dbh->prepare($query);
 	$stmt->execute();
-	$list = $stmt->fetchAll();
+	$list = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 	var_dump( $list );
 	exit;
