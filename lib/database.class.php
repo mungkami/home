@@ -8,8 +8,8 @@ class Database{
 
 		$dsn = 'mysql:host='.$dsn;
 
-		if( $option == null ){
-			$option = array(
+		if( $options == null ){
+			$options = array(
 				PDO::ATTR_PERSISTENT 	=> true,
 				PDO::ATTR_ERRMODE 		=> PDO::ERRMODE_EXCEPTION
 			);
