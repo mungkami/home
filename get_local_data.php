@@ -26,7 +26,8 @@ try {
 	$list = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 	foreach($list as $data){
-		echo iconv( 'euc-kr', 'utf-8', $data ).PHP_EOL;
+		$serviceName = iconv( 'euc-kr', 'utf-8', $data );
+		echo $serviceName.PHP_EOL;
 	}
 	exit;
 
