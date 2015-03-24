@@ -22,7 +22,7 @@ try {
 
 	$dsn = 'localhost';
 	$username = 'root';
-	$passwd = 'yg1234';
+	$passwd = 'yg3035';	//test
 
 	$database = new Database($dsn, $username, $passwd);
 	$dbh = $database->getDbh();
