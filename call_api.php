@@ -72,16 +72,16 @@ try {
 		$payMethod 		= $row['payMethod'];
 		$payAmount		= $row['payAmount'];
 		$payStatus		= $row['payStatus'];
-		$serviceName	= $row['serviceName'];
+		$serviceName	= iconv( 'utf-8', 'euc-kr', $row['serviceName'] );
 		$productCode	= $row['productCode'];
 		$parentId		= $row['parentId'];
 		$userId			= $row['userId'];
-		$orderName		= $row['orderName'];
+		$orderName		= iconv( 'utf-8', 'euc-kr', $row['orderName'] );
 		$orderNo		= $row['orderNo'];
 		$pgId			= $row['pgId'];
 		$tradeNo		= $row['tradeNo'];
 		$approvalNo		= $row['approvalNo'];
-		$bankName		= $row['bankName'];
+		$bankName		= iconv( 'utf-8', 'euc-kr', $row['bankName'] );
 		$accountNo		= $row['accountNo'];
 		$accountName	= $row['accountName'];
 		$escrowYN		= $row['escrowYN'];
@@ -98,7 +98,7 @@ try {
 		$remark			= $row['remark'];
 
 
-		$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUC-KR" );
+		//$stmt->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES EUC-KR" );
 
 		$result = $stmt->execute();
 
