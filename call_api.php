@@ -73,7 +73,7 @@ try {
 		$payAmount		= $row['payAmount'];
 		$payStatus		= $row['payStatus'];
 		echo 'serviceName : '.$row['serviceName'].PHP_EOL;
-		$serviceName = iconv( 'utf-8', 'euc-kr', $row['serviceName'] );
+		$serviceName = iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
 		echo 'serviceName : '.$serviceName.PHP_EOL;
 		$serviceName	= $serviceName;
 		$productCode	= $row['productCode'];
