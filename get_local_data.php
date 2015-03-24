@@ -25,7 +25,9 @@ try {
 	$stmt->execute();
 	$list = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-	var_dump( $list );
+	foreach($list as $data){
+		echo $data.PHP_EOL;
+	}
 	exit;
 
 
