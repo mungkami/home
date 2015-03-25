@@ -4,7 +4,7 @@
 
 try {
 
-	echo 'test API call';
+	echo 'test API call'.PHP_EOL;
 
 	include_once 'lib/net.class.php';
 
@@ -34,6 +34,8 @@ try {
 
 	$getData = Net::getHtml( $getDataUrl, 'GET', 30, TRUE );
 	$getData = unserialize($getData);
+
+	echo 'last paymentIdx='.$paymentIdx.PHP_EOL;
 
 
 	$query  = "INSERT INTO pay_data ( paymentIdx, payTableKey, payMethod, payAmount, ";
@@ -84,6 +86,8 @@ try {
 		$serviceName 	= iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
 		$orderName		= iconv( 'utf-8', 'euc-kr', $row['orderName'] );
 		$bankName		= iconv( 'utf-8', 'euc-kr', $row['bankName'] );
+
+		echo 'paymentIdx='.$key.PHP_EOL;
 
 		$paymentIdx	 	= $key;
 		$payTableKey 	= $row['payTableKey'];
