@@ -131,9 +131,10 @@ try {
 				echo 'Insert Error | payTableKey='.$payTableKey.PHP_EOL;
 			}
 		}
-	}
 
-	unset( $getData, $stmt, $dbh );
+		unset( $getData, $stmt );
+	}
+	unset( $dbh );
 	exit;
 
 
