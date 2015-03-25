@@ -92,9 +92,9 @@ try {
 		foreach( $getData as $key => $row ){
 
 			$serviceName 	= iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
-			$orderName		= iconv( 'utf-8', 'euc-kr', $row['orderName'] );
-			$bankName		= iconv( 'utf-8', 'euc-kr', $row['bankName'] );
-			$remark			= iconv( 'utf-8', 'euc-kr', $row['remark'] );
+			$orderName		= iconv( 'euc-kr', 'utf-8', $row['orderName'] );
+			$bankName		= iconv( 'euc-kr', 'utf-8', $row['bankName'] );
+			$remark			= iconv( 'euc-kr', 'utf-8', $row['remark'] );
 
 			echo 'paymentIdx='.$key.PHP_EOL;
 
