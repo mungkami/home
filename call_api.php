@@ -3,16 +3,10 @@
 #local test getData API
 
 try {
+
 	echo 'test API call';
 
 	include_once 'lib/net.class.php';
-
-	$getDataurl  = 'https://billingadmin.cafe24.com/test/ykkim02/test_get_pay_data.php';
-
-	$sslFlag = Net::getSSLFlag( $getDataurl );
-
-	$getData = Net::getHtml( $getDataurl, 'GET', 30, TRUE );
-	$getData = unserialize($getData);
 
 	#set Database
 	include_once 'lib/database.class.php';
@@ -24,6 +18,23 @@ try {
 	$database = new Database($dsn, $username, $passwd);
 	$dbh = $database->getDbh();
 	$dbh->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES euckr");
+
+	$query = "SELECT paymentIdx FROM pay_data ORDER BY idx DESC LIMIT 1 ";
+	$stmt = $dbh->prepare($query);
+	$stmt->execute();
+	$payData = $stmt->fetch(PDO::FETCH_ASSOC);
+	$paymentIdx = $payData['paymentIdx'];
+
+
+
+	$getDataUrl  = 'https://billingadmin.cafe24.com/test/ykkim02/test_get_pay_data.php';
+	$getDataUrl .= '?paymentIdx='.$paymentIdx;
+
+	$sslFlag = Net::getSSLFlag( $getDataUrl );
+
+	$getData = Net::getHtml( $getDataUrl, 'GET', 30, TRUE );
+	$getData = unserialize($getData);
+
 
 	$query  = "INSERT INTO pay_data ( paymentIdx, payTableKey, payMethod, payAmount, ";
 	$query .= "payStatus, serviceName, productCode, parentId, userId, orderName, orderNo, ";
