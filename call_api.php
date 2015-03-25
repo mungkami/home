@@ -94,6 +94,7 @@ try {
 			$serviceName 	= iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
 			$orderName		= iconv( 'utf-8', 'euc-kr', $row['orderName'] );
 			$bankName		= iconv( 'utf-8', 'euc-kr', $row['bankName'] );
+			$remark			= iconv( 'utf-8', 'euc-kr', $row['remark'] );
 
 			echo 'paymentIdx='.$key.PHP_EOL;
 
@@ -123,7 +124,7 @@ try {
 			$cancelKey		= $row['cancelKey'];
 			$managerId		= $row['managerId'];
 			$devRemark		= $row['devRemark'];
-			$remark			= $row['remark'];
+			$remark			= $remark;
 
 			$result = $stmt->execute();
 
