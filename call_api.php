@@ -25,18 +25,19 @@ try {
 	$dbh = $database->getDbh();
 	$dbh->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES euckr");
 
-	$query  = "INSERT INTO pay_data ( payTableKey, payMethod, payAmount, ";
+	$query  = "INSERT INTO pay_data ( paymentIdx, payTableKey, payMethod, payAmount, ";
 	$query .= "payStatus, serviceName, productCode, parentId, userId, orderName, orderNo, ";
 	$query .= "pgId, tradeNo, approvalNo, bankName, accountNo, accountName, escrowYN, escrowNo, ";
 	$query .= "mobileNo, regDate, bankCheckIdx, updateDate, testFlag, refundIdx, cancelKey, ";
 	$query .= "managerId, devRemark, remark) VALUES( ";
-	$query .= ":payTableKey, :payMethod, :payAmount, ";
+	$query .= ":paymentIdx, :payTableKey, :payMethod, :payAmount, ";
 	$query .= ":payStatus, :serviceName, :productCode, :parentId, :userId, :orderName, :orderNo, ";
 	$query .= ":pgId, :tradeNo, :approvalNo, :bankName, :accountNo, :accountName, :escrowYN, :escrowNo, ";
 	$query .= ":mobileNo, :regDate, :bankCheckIdx, :updateDate, :testFlag, :refundIdx, :cancelKey, ";
 	$query .= ":managerId, :devRemark, :remark )";
 
 	$stmt = $dbh->prepare($query);
+	$stmt->bindParam( ':paymentIdx', $paymentIdx, PDO::PARAM_INT );
 	$stmt->bindParam( ':payTableKey', $payTableKey, PDO::PARAM_STR );
 	$stmt->bindParam( ':payMethod', $payMethod, PDO::PARAM_STR );
 	$stmt->bindParam( ':payAmount', $payAmount, PDO::PARAM_INT );
@@ -69,23 +70,23 @@ try {
 	#getData -> db INSERT
 	foreach( $getData as $key => $row ){
 
-		$payTableKey 	= $key;
+		$serviceName 	= iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
+		$orderName		= iconv( 'utf-8', 'euc-kr', $row['orderName'] );
+		$bankName		= iconv( 'utf-8', 'euc-kr', $row['bankName'] );
+
+		$paymentIdx	 	= $key;
+		$payTableKey 	= $row['payTableKey'];
 		$payMethod 		= $row['payMethod'];
 		$payAmount		= $row['payAmount'];
 		$payStatus		= $row['payStatus'];
-		echo 'serviceName : '.$row['serviceName'].PHP_EOL;
-		$serviceName = iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
-		echo 'serviceName : '.$serviceName.PHP_EOL;
 		$serviceName	= $serviceName;
 		$productCode	= $row['productCode'];
 		$parentId		= $row['parentId'];
 		$userId			= $row['userId'];
-		$orderName		= iconv( 'utf-8', 'euc-kr', $row['orderName'] );
 		$orderNo		= $row['orderNo'];
 		$pgId			= $row['pgId'];
 		$tradeNo		= $row['tradeNo'];
 		$approvalNo		= $row['approvalNo'];
-		$bankName		= iconv( 'utf-8', 'euc-kr', $row['bankName'] );
 		$accountNo		= $row['accountNo'];
 		$accountName	= $row['accountName'];
 		$escrowYN		= $row['escrowYN'];

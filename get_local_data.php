@@ -17,16 +17,16 @@ try {
 
 	//$dbh->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES euckr");
 
-	$query  = "SELECT serviceName ";
+	$query  = "SELECT payTableKey, serviceName ";
 	$query .= "FROM pay_data ";
-	$query .= "ORDER BY idx DESC LIMIT 2";
+	$query .= "";
 
 	$stmt = $dbh->prepare($query);
 	$stmt->execute();
-	$list = $stmt->fetchAll(PDO::FETCH_COLUMN);
+	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-	foreach($list as $data){
-		$serviceName = iconv( 'utf-8', 'euc-kr', $data );
+	foreach($list as $row => $data ){
+		$serviceName = iconv( 'utf-8', 'euc-kr', $data['serviceName'] );
 		echo $serviceName.PHP_EOL;
 	}
 	exit;
