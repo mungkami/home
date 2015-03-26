@@ -36,7 +36,7 @@ try {
 	while(true){
 
 		if( $cnt == 500 ){
-			echo 'cnt = 100'.PHP_EOL;
+			echo 'cnt ='.$cnt.PHP_EOL;
 			break;
 		}
 		$cnt++;
@@ -57,7 +57,7 @@ try {
 		$getData = Net::getHtml( $getDataUrl, 'GET', 30, TRUE );
 		$getData = unserialize($getData);
 
-		echo 'last paymentIdx='.$paymentIdx.PHP_EOL;
+		echo 'last paymentIdx='.$paymentIdx.' | cnt='.$cnt.PHP_EOL;
 
 		if( empty( $getData ) == true ){
 			echo 'END '.PHP_EOL;
