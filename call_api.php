@@ -28,7 +28,7 @@ try {
 	$insertQuery .= ":paymentIdx, :payTableKey, :payMethod, :payAmount, ";
 	$insertQuery .= ":payStatus, :serviceName, :productCode, :parentId, :userId, :orderName, :orderNo, ";
 	$insertQuery .= ":pgId, :tradeNo, :approvalNo, :bankName, :accountNo, :accountName, :escrowYN, :escrowNo, ";
-	$insertQuery .= ":mobileNo, :regDate, :bankCheckIdx, :updateDate, :testFlag, :cancelKey, ";
+	$insertQuery .= ":mobileNo, :regDate, :bankCheckIdx, :updateDate, :testFlag, :refundIdx, :cancelKey, ";
 	$insertQuery .= ":managerId, :devRemark, :remark )";
 
 	$cnt = 1;
@@ -55,9 +55,6 @@ try {
 		$sslFlag = Net::getSSLFlag( $getDataUrl );
 
 		$getData = Net::getHtml( $getDataUrl, 'GET', 30, TRUE );
-		echo $getData;
-		var_dump( $getData );
-		break;
 		$getData = unserialize($getData);
 
 		echo 'last paymentIdx='.$paymentIdx.PHP_EOL;
@@ -93,6 +90,7 @@ try {
 		$stmt->bindParam( ':bankCheckIdx', $bankCheckIdx, PDO::PARAM_INT );
 		$stmt->bindParam( ':updateDate', $updateDate, PDO::PARAM_STR );
 		$stmt->bindParam( ':testFlag', $testFlag, PDO::PARAM_STR );
+		$stmt->bindParam( ':refundIdx', $refundIdx, PDO::PARAM_INT );
 		$stmt->bindParam( ':cancelKey', $cancelKey, PDO::PARAM_STR );
 		$stmt->bindParam( ':managerId', $managerId, PDO::PARAM_STR );
 		$stmt->bindParam( ':devRemark', $devRemark, PDO::PARAM_STR );
@@ -130,6 +128,7 @@ try {
 			$bankCheckIdx	= $row['bankCheckIdx'];
 			$updateDate		= $row['updateDate'];
 			$testFlag		= $row['testFlag'];
+			$refundIdx		= $row['refundIdx'];
 			$cancelKey		= $row['cancelKey'];
 			$managerId		= $row['managerId'];
 			$devRemark		= $row['devRemark'];
