@@ -141,6 +141,10 @@ try {
 			if( $result == false ){
 				echo 'Insert Error | payTableKey='.$payTableKey.PHP_EOL;
 			}
+
+			if( $productCode == 'NONE' ){
+				echo 'getData was empty | paymentIdx='.$paymentIdx.' | payTableKey='.$payTableKey.PHP_EOL;
+			}
 		}
 
 		unset( $getData, $stmt );
