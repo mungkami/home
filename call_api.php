@@ -35,7 +35,7 @@ try {
 
 	while(true){
 
-		if( $cnt == 100 ){
+		if( $cnt == 500 ){
 			echo 'cnt = 100'.PHP_EOL;
 			break;
 		}
