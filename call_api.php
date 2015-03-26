@@ -55,6 +55,9 @@ try {
 		$sslFlag = Net::getSSLFlag( $getDataUrl );
 
 		$getData = Net::getHtml( $getDataUrl, 'GET', 30, TRUE );
+		echo $getData;
+		var_dump( $getData );
+		break;
 		$getData = unserialize($getData);
 
 		echo 'last paymentIdx='.$paymentIdx.PHP_EOL;
