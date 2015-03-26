@@ -31,7 +31,15 @@ try {
 	$insertQuery .= ":mobileNo, :regDate, :bankCheckIdx, :updateDate, :testFlag, :refundIdx, :cancelKey, ";
 	$insertQuery .= ":managerId, :devRemark, :remark )";
 
+	$cnt = 1;
+
 	while(true){
+
+		if( $cnt == 100 ){
+			echo 'cnt = 100'.PHP_EOL;
+			break;
+		}
+		$cnt++;
 
 		$query = "SELECT paymentIdx FROM pay_data ORDER BY idx DESC LIMIT 1 ";
 		$stmt = $dbh->prepare($query);
