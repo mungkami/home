@@ -99,6 +99,8 @@ try {
 		#getData -> db INSERT
 		foreach( $getData as $key => $row ){
 
+			var_dump( $row );
+
 			$serviceName 	= iconv( 'euc-kr', 'utf-8', $row['serviceName'] );
 			$orderName		= iconv( 'euc-kr', 'utf-8', $row['orderName'] );
 			$bankName		= iconv( 'euc-kr', 'utf-8', $row['bankName'] );
